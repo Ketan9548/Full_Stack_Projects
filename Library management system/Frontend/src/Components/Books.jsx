@@ -18,6 +18,15 @@ const Books = () => {
       });
   }, [url]);
 
+  const deleteItem = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3321/api/deletebook/${id}`);
+      setData((prevData) => prevData.filter((item) => item[1]._id !== id));
+    } catch (err) {
+      console.error("Error deleting item: ", err);
+    }
+  };
+
   return (
     <>
       <div>
@@ -51,6 +60,11 @@ const Books = () => {
               </p>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 Updated At: {new Date(val[1].updatedAt).toLocaleString("en-us")}
+              </p>
+            </div>
+            <div className="ml-3 mb-3">
+              <p className="bg-red-400 w-28 flex justify-center border-2 border-black rounded-xl">
+                <button onClick={() => deleteItem(val[1]._id)}>Delete</button>
               </p>
             </div>
           </div>
