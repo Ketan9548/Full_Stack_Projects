@@ -1,0 +1,22 @@
+{
+  "name": "backendloan",
+  "version": "1.0.0",
+  "description": "this is the backend of the loan app for customer",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "index.js"
+  },
+  "author": "Ketan Chauhan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
