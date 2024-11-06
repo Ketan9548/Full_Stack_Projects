@@ -1,20 +1,42 @@
-import library from '../assets/StudentStudy.jpg';
-import library1 from '../assets/StudentStudy1.jpg';
+import { NavLink } from "react-router-dom";
+import library from "../assets/StudentStudy.jpg";
+import library1 from "../assets/StudentStudy1.jpg";
 
 function Home() {
   return (
-    <div> {/* Add top padding to create space below the navbar */}
-      <div className="flex flex-col md:flex-row bg-slate-700 md:h-screen h-auto">
-        <div className="md:h-96 h-auto w-full md:w-2/5 flex flex-col justify-center text-7xl p-10">
-          <h2 className="text-white">Book Store For You.....</h2>
-          <button className="text-sm border-2 font-bold text-white border-black mt-3 p-2 w-24 hover:bg-white hover:text-slate-700 hover:font-bold">
-            View Books
-          </button>
+    <div className="h-screen w-full sm:bg-slate-700 sm:w-screen bg-slate-600 grid place-items-center">
+      <div className="container mx-auto p-4 grid lg:grid-cols-2 gap-8 items-center">
+        <div className="text-center lg:text-left lg:mt-24">
+          <p className="text-4xl md:text-6xl font-bold text-white">
+            Book store for Your Books.....
+          </p>
+          <div className="mt-4">
+            <NavLink to="/">
+              <button className="px-4 py-2 bg-slate-700 text-white font-medium rounded-md border-2 border-black hover:bg-white hover:text-black transition-colors">
+                Show Books..
+              </button>
+            </NavLink>
+          </div>
         </div>
-        <div className="flex-col justify-center items-center md:w-3/5 h-screen">
-          <img className="h-52 pt-8 md:w-2/4 p-4" src={library} alt="Student Study" />
-          <p className='text-white font-bold text-xl text-center'>Knowledge is the bedrock of a meaningful life.</p>
-          <img className="pl-28 h-48 md:w-2/4 p-4" src={library1} alt="Student Study" />
+        <div className="flex flex-col items-center space-y-6">
+          <div className="sm:-ml-80 hover:pl-3 hover:cursor-pointer">
+            <img
+              src={library}
+              alt="Student Studying"
+              className="w-full h-48 sm:h-full  rounded-lg shadow-md"
+            />
+          </div>
+          <p className="text-white font-bold text-center">
+            The beautiful thing about learning is nobody can take it away from
+            you....
+          </p>
+          <div className="sm:ml-24 hover:pl-3 hover:cursor-pointer">
+            <img
+              src={library1}
+              alt="Student Studying"
+              className="w-full h-48 md:h-full rounded-lg shadow-md"
+            />
+          </div>
         </div>
       </div>
     </div>

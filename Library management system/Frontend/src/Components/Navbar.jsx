@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -11,9 +11,8 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="bg-zinc-700 p-4 shadow-lg">
+      <nav className="bg-zinc-700 w-screen p-4 shadow-lg">
         <div className="container mx-auto flex justify-between items-center">
-          {/* Logo Section */}
           <div className="text-white text-2xl font-bold">Library</div>
 
           <div className="md:hidden flex items-center">
@@ -24,8 +23,6 @@ const Navbar = () => {
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
           </div>
-
-          {/* Navigation Links */}
           <div
             className={`md:flex space-x-6 ${
               isOpen ? "block" : "hidden"
@@ -34,7 +31,7 @@ const Navbar = () => {
             <NavLink
               to="/home"
               className="text-white hover:text-gray-300 transition duration-200"
-              onClick={() => setIsOpen(false)} // Close menu on link click
+              onClick={() => setIsOpen(false)}
             >
               Home
             </NavLink>
@@ -70,7 +67,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
           <NavLink
             to="/home"
