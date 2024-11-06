@@ -1,12 +1,14 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import Home from "./Pages/Home";
+import Fotter from "./Components/Fotter";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Home />
+      <Outlet />
+      <Fotter />
     </>
   );
 }

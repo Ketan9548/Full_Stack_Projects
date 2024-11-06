@@ -50,7 +50,7 @@ const Navbar = () => {
               Categories
             </NavLink>
             <NavLink
-              to="#about"
+              to="/about"
               className="text-white hover:text-gray-300 transition duration-200"
               onClick={() => setIsOpen(false)}
             >
