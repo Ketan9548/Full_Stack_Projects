@@ -3,6 +3,13 @@ import axios from "axios";
 
 const Books = () => {
   const [data, setData] = useState([]);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [updatedBookDetails, setUpdatedBookDetails] = useState({
+    BookName: "",
+    price: "",
+    author: "",
+    description: "",
+  });
   const url = "http://localhost:3321/api/show";
 
   useEffect(() => {
@@ -24,6 +31,40 @@ const Books = () => {
       setData((prevData) => prevData.filter((item) => item[1]._id !== id));
     } catch (err) {
       console.error("Error deleting item: ", err);
+    }
+  };
+
+  const handleUpdateInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedBookDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
+
+  const Updatevalue = async (id) => {
+    try {
+      await axios.put(
+        `http://localhost:3321/api/updatabook/${id}`,
+        updatedBookDetails
+      );
+      setData((prevData) =>
+        prevData.map((item) => {
+          if (item[1]._id === id) {
+            return [item[0], { ...item[1], ...updatedBookDetails }];
+          }
+          return item;
+        })
+      );
+      setSelectedBook(null);
+      setUpdatedBookDetails({
+        BookName: "",
+        price: "",
+        author: "",
+        description: "",
+      });
+    } catch (error) {
+      console.error("Error updating item: ", error);
     }
   };
 
@@ -62,14 +103,112 @@ const Books = () => {
                 Updated At: {new Date(val[1].updatedAt).toLocaleString("en-us")}
               </p>
             </div>
-            <div className="ml-3 mb-3">
-              <p className="bg-red-400 w-28 flex justify-center border-2 border-black rounded-xl">
-                <button onClick={() => deleteItem(val[1]._id)}>Delete</button>
-              </p>
+            <div className="flex justify-around">
+              <div className="ml-3 mb-3">
+                <p className="bg-red-400 w-28 flex justify-center border-2 border-black rounded-xl">
+                  <button onClick={() => deleteItem(val[1]._id)}>Delete</button>
+                </p>
+              </div>
+              <div className="ml-3 mb-3">
+                <p className="bg-yellow-200 w-28 flex justify-center border-2 border-black rounded-xl">
+                  <button
+                    onClick={() => {
+                      setSelectedBook(val[1]);
+                      setUpdatedBookDetails({
+                        BookName: val[1].BookName,
+                        price: val[1].price,
+                        author: val[1].author,
+                        description: val[1].description,
+                      });
+                    }}
+                  >
+                    Update
+                  </button>
+                </p>
+              </div>
             </div>
           </div>
         ))}
       </div>
+
+      {selectedBook && (
+        <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+            <h2 className="text-2xl font-semibold mb-4 text-center text-gray-900">
+              Update Book: {selectedBook.BookName}
+            </h2>
+            <form>
+              <div className="mb-4">
+                <label className="block text-gray-700 font-medium mb-2">
+                  Book Name
+                </label>
+                <input
+                  type="text"
+                  name="BookName"
+                  value={updatedBookDetails.BookName}
+                  onChange={handleUpdateInputChange}
+                  className="w-full p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter book name"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 font-medium mb-2">
+                  Price
+                </label>
+                <input
+                  type="text"
+                  name="price"
+                  value={updatedBookDetails.price}
+                  onChange={handleUpdateInputChange}
+                  className="w-full p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter book price"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 font-medium mb-2">
+                  Author
+                </label>
+                <input
+                  type="text"
+                  name="author"
+                  value={updatedBookDetails.author}
+                  onChange={handleUpdateInputChange}
+                  className="w-full p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter author's name"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 font-medium mb-2">
+                  Description
+                </label>
+                <textarea
+                  name="description"
+                  value={updatedBookDetails.description}
+                  onChange={handleUpdateInputChange}
+                  className="w-full p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter book description"
+                ></textarea>
+              </div>
+              <div className="flex justify-end space-x-4">
+                <button
+                  type="button"
+                  onClick={() => Updatevalue(selectedBook._id)}
+                  className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  Update Book
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedBook(null)}
+                  className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };
