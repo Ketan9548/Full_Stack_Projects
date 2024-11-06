@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 8px;
+}
+
+.Admin-panel {
+    font-size: small;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(32, 29, 29);
+    margin-top: 1px;
+    height: 0.4vw;
+}
+
+.logo {
+    height: 4.8vw;
+    width: 4.7vw;
+}
+
+.profile {
+    margin-top: 4px;
+    margin-left: 1px;
+    height: 6vw;
+    width: 5.6vw;
+}
+
+.profile-container {
+    position: relative;
+}
+
+.profile-input {
+    display: none;
+}
+
+.profile-container:hover .profile-input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}

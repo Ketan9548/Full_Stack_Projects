@@ -10,7 +10,6 @@ import ShowBooks from "./Pages/ShowBooks";
 function App() {
   return (
     <>
-      <h1 className="text-red-500">this is frontend</h1>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/books/create" element={<CreateBook/>}/>
