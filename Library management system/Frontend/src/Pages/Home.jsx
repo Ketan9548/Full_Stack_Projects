@@ -11,7 +11,7 @@ function Home() {
             Book store for Your Books.....
           </p>
           <div className="mt-4">
-            <NavLink to="/">
+            <NavLink to="/bookslist">
               <button className="px-4 py-2 bg-slate-700 text-white font-medium rounded-md border-2 border-black hover:bg-white hover:text-black transition-colors">
                 Show Books..
               </button>

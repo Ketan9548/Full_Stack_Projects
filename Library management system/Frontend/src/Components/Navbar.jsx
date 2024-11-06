@@ -23,6 +23,7 @@ const Navbar = () => {
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
           </div>
+
           <div
             className={`md:flex space-x-6 ${
               isOpen ? "block" : "hidden"
@@ -40,7 +41,7 @@ const Navbar = () => {
               className="text-white hover:text-gray-300 transition duration-200"
               onClick={() => setIsOpen(false)}
             >
-             Add Books
+              Add Books
             </NavLink>
             <NavLink
               to="/bookslist"
@@ -57,45 +58,6 @@ const Navbar = () => {
               About
             </NavLink>
           </div>
-
-          <div className="flex items-center space-x-4">
-            <input
-              type="text"
-              placeholder="Search books..."
-              className="px-3 py-1 rounded-md outline-none"
-            />
-          </div>
-        </div>
-
-        <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
-          <NavLink
-            to="/"
-            className="block text-white hover:text-gray-300 transition duration-200 p-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/addbooks"
-            className="block text-white hover:text-gray-300 transition duration-200 p-2"
-            onClick={() => setIsOpen(false)}
-          >
-           Add Books
-          </NavLink>
-          <NavLink
-            to="/bookslist"
-            className="block text-white hover:text-gray-300 transition duration-200 p-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Books
-          </NavLink>
-          <NavLink
-            to="#about"
-            className="block text-white hover:text-gray-300 transition duration-200 p-2"
-            onClick={() => setIsOpen(false)}
-          >
-            About
-          </NavLink>
         </div>
       </nav>
     </div>
