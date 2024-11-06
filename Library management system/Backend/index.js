@@ -1,9 +1,12 @@
 import express from 'express'
 import connected from './DBConnection/Connection.js';
 import Bookapp from './Routes/BooksRoutes.js';
+import cors from 'cors';
 
 const app = express();
 const PORT = 3321;
+
+app.use(cors())
 
 app.use(express.json())
 

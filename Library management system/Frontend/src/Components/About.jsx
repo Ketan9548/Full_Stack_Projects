@@ -48,11 +48,11 @@ const About = () => {
         </p>
       </div>
       <div className="flex justify-center mt-10">
-        <div className="mr-14 cursor-pointer">
+        <div className="mr-14 ml-4 cursor-pointer">
           <p className="font-bold flex justify-center">Adrees:</p>
           <p>Uttarpadesh Noida sector-51 pin-21XXX</p>
         </div>  
-        <div className="ml-10 cursor-pointer">
+        <div className="ml-8 cursor-pointer">
           <p className="font-bold flex justify-center">Contact us:</p>
           <p className="flex justify-center">Phone: 9548XXXXXXX</p>
           <p className="flex justify-center">Email: smaple@gmail.com</p>

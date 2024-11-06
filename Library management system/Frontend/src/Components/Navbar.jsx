@@ -29,25 +29,25 @@ const Navbar = () => {
             } md:block`}
           >
             <NavLink
-              to="/home"
+              to="/"
               className="text-white hover:text-gray-300 transition duration-200"
               onClick={() => setIsOpen(false)}
             >
               Home
             </NavLink>
             <NavLink
-              to="#books"
+              to="/addbooks"
+              className="text-white hover:text-gray-300 transition duration-200"
+              onClick={() => setIsOpen(false)}
+            >
+             Add Books
+            </NavLink>
+            <NavLink
+              to="/bookslist"
               className="text-white hover:text-gray-300 transition duration-200"
               onClick={() => setIsOpen(false)}
             >
               Books
-            </NavLink>
-            <NavLink
-              to="#categories"
-              className="text-white hover:text-gray-300 transition duration-200"
-              onClick={() => setIsOpen(false)}
-            >
-              Categories
             </NavLink>
             <NavLink
               to="/about"
@@ -69,25 +69,25 @@ const Navbar = () => {
 
         <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
           <NavLink
-            to="/home"
+            to="/"
             className="block text-white hover:text-gray-300 transition duration-200 p-2"
             onClick={() => setIsOpen(false)}
           >
             Home
           </NavLink>
           <NavLink
-            to="#books"
+            to="/addbooks"
+            className="block text-white hover:text-gray-300 transition duration-200 p-2"
+            onClick={() => setIsOpen(false)}
+          >
+           Add Books
+          </NavLink>
+          <NavLink
+            to="/bookslist"
             className="block text-white hover:text-gray-300 transition duration-200 p-2"
             onClick={() => setIsOpen(false)}
           >
             Books
-          </NavLink>
-          <NavLink
-            to="#categories"
-            className="block text-white hover:text-gray-300 transition duration-200 p-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Categories
           </NavLink>
           <NavLink
             to="#about"
