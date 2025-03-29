@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import Navbar from './Components/Navbar/Navbar'
-import { Slide, Slider } from '@mui/material'
-import Sliderfile from './Components/Home/Sliderfile'
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Sliderfile />
+      <Outlet />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
